@@ -33,7 +33,7 @@ static class Tools
         return (float)distance;
     }
 
-    private static Tuple<int, int> MoveToPosition(Tuple<int, int> posStart, Tuple<int, int> posEnd, int mouvement)
+    public static Tuple<int, int> MoveToPosition(Tuple<int, int> posStart, Tuple<int, int> posEnd, int mouvement)
     {
         float distance = Tools.GetDistance(posStart, posEnd);
         float t = mouvement / distance;
