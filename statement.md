@@ -28,6 +28,11 @@ static class Tools
 
         return (float)distance;
     }
+
+    public static void PrintMove(Tuple<int, int> move)
+    {
+        Console.WriteLine($"{move.Item1} {move.Item2}");
+    }
 }
 ```
 
