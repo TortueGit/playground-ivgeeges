@@ -9,7 +9,11 @@ class Hello
 {
     static void Main() 
     {
-        Console.WriteLine("Hello World!");
+        Tuple<int, int> pos1 = new Tuple<int, int>(1, 1);
+        Tuple<int, int> pos2 = new Tuple<int, int>(1, 1);
+        int mvmt = 1000;
+
+        Tools.PrintMove(Tools.MoveToPosition(pos1, pos2, mvmt));
     }
 }
 
@@ -27,6 +31,16 @@ static class Tools
         distance = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
 
         return (float)distance;
+    }
+
+    private Tuple<int, int> MoveToPosition(Tuple<int, int> posStart, Tuple<int, int> posEnd, int mouvement)
+    {
+        float distance = Tools.GetDistance(posStart, posEnd);
+        float t = mouvement / distance;
+        return new Tuple<int, int>(
+                (int)Math.Floor(posStart.Item1 + (t * (posEnd.Item1 - posStart.Item1))),
+                (int)Math.Floor(posStart.Item2 + (t * (posEnd.Item2 - posStart.Item2)))
+            );
     }
     
     public static void PrintMove(Tuple<int, int> move)
